@@ -1,0 +1,51 @@
+import java.lang.*;
+import java.io.*;
+public class ch13_02 //主類別
+{
+ public static void main(String args[])
+ {
+ two two1 = new two();
+ tri tri1= new tri();
+ two1.start();
+ tri1.start();
+ }
+}
+
+class two extends Thread
+{ 
+ int n=2;
+ private void serving()
+ {
+	 System.out.println("偶數:"+ n);
+	 n+=2;
+ }
+ 
+ public void run() 
+ {
+	 while(n<=100)
+	{
+		serving();
+	 try
+	 {sleep(200);}
+	 catch(InterruptedException e){}
+	 }	
+ }
+}
+class tri extends Thread
+{ 
+ int f=3;
+ private void serving()
+ { 
+ System.out.println("3的倍數:"+ f);
+ f+=3;
+ }
+ public void run() 
+ {
+	 while(f<=100){
+		 serving();
+	 try
+	 {sleep(300);}
+	 catch(InterruptedException e){}
+	 }
+ }
+}
